@@ -12,8 +12,12 @@ request(url, (error, resp, body) => { // perform request
   }
 
   const data = JSON.parse(body); // parse data - body
-//  console.log(data [0]);
+  //  console.log(data [0]);
 
   const breed = data[0]; // get object out of array;
-  console.log(breed.description); // log the breed description;
+  if (breed) { //check if breed is available
+    console.log(breed.description); // log the breed description;
+  } else { // if not, fail.
+    console.log(`Failed to find the breed ${breedName}`);
+  }
 });
